@@ -1,0 +1,51 @@
+{
+	"blocks": {
+		"voidbarrier": {
+			"gravity": false,
+			"material": "return new THREE.MeshLambertMaterial({map:loadTexture(`data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAA0VXHyAAAAh0lEQVQ4EZWTWQ7AIAhEsfe/s1XSMQNlif6wvRmaGscUmUNk7CgXx2huxWYPxIhmmBRgNaLYLOeJ1jA/g87ELwgNMhMvPlw0OMOdrFMy2bASqutn/KCIornrCFi91ABf1poA5AVXPQ/7ujJWlgWcs5BzZowBD1gQ5WARI6btQazPuP3TgR00L+XPY69US1v2AAAAAElFTkSuQmCC`)})",
+			"name": "Voidbarrier"
+		},
+
+		"dirt": {
+			"material": "const size = 16; const colors = [`#642`,`#753`,`#864`,`#975`,`#A86`,`#B97`,`#CA8`]; const face = () => {const canvas = document.createElement(`canvas`); const ctx = canvas.getContext(`2d`); canvas.width = canvas.height = size; for (let x = 0; x < size; ++x) {for (let y = 0; y < size; ++y) {ctx.fillStyle = colors[Int(Random() / 10 * (colors.length - 1))]; ctx.fillRect(x,y,1,1)}} return new THREE.MeshLambertMaterial({map:loadTexture(canvas.toDataURL())})}; return [face(),face(),face(),face(),face(),face()]",
+			"name": "Dirt"
+		},
+
+		"grass": {
+			"material": "const size = 16; const colors1 = [`#642`,`#753`,`#864`,`#975`,`#A86`,`#B97`,`#CA8`]; const colors2 = [`#060`,`#070`,`#080`,`#090`,`#0A0`]; const bottom = () => {const canvas = document.createElement(`canvas`); const ctx = canvas.getContext(`2d`); canvas.width = canvas.height = size; for (let x = 0; x < size; ++x) {for (let y = 0; y < size; ++y) {ctx.fillStyle = colors1[Int(Random() / 10 * (colors1.length - 1))]; ctx.fillRect(x,y,1,1)}} return new THREE.MeshLambertMaterial({map:loadTexture(canvas.toDataURL())})}; const top = () => {const canvas = document.createElement(`canvas`); const ctx = canvas.getContext(`2d`); canvas.width = canvas.height = size; for (let x = 0; x < size; ++x) {for (let y = 0; y < size; ++y) {ctx.fillStyle = colors2[Int(Random() / 10 * (colors2.length - 1))]; ctx.fillRect(x,y,1,1)}} return new THREE.MeshLambertMaterial({map:loadTexture(canvas.toDataURL())})}; const face = () => {const canvas = document.createElement(`canvas`); const ctx = canvas.getContext(`2d`); canvas.width = canvas.height = size; for (let x = 0; x < size; ++x) {for (let y = 0; y < size; ++y) {ctx.fillStyle = colors1[Int(Random() / 10 * (colors1.length - 1))]; ctx.fillRect(x,y,1,1)}} for (let x = 0; x < size; ++x) {for (let y = 0; y < Int(Random() / 10 * 2 + 2); ++y) {ctx.fillStyle = colors2[Int(Random() / 10 * (colors2.length - 1))]; ctx.fillRect(x,y,1,1)}} return new THREE.MeshLambertMaterial({map:loadTexture(canvas.toDataURL())})}; return [face(),face(),top(),bottom(),face(),face()]",
+			"name": "Grass",
+			"rotation": {
+				"x": 0,
+				"z": 0
+			}
+		},
+
+		"stone": {
+			"gravity": false,
+			"material": "const size = 16; const colors = [`#77777B`,`#737377`,`#6F6F73`,`#6B6B6F`,`#67676B`,`#636367`,`#5F5F63`]; const face = () => {const canvas = document.createElement(`canvas`); const ctx = canvas.getContext(`2d`); canvas.width = canvas.height = size; for (let x = 0; x < size; ++x) {for (let y = 0; y < size; ++y) {ctx.fillStyle = colors[Int(Random() / 10 * colors.length - 1)]; ctx.fillRect(x,y,1,1)}} return new THREE.MeshLambertMaterial({map:loadTexture(canvas.toDataURL())})}; return [face(),face(),face(),face(),face(),face()]",
+			"name": "Stone"
+		},
+
+		"sand": {
+			"material": "const size = 16; const colors = [`#FFC`,`#FAFAC8`,`#EEB`,`#E9E9B7`,`#DDA`,`#D8D8A6`,`#CC9`,`#C7C795`,`#BB8`,`#B6B684`]; const face = () => {const canvas = document.createElement(`canvas`); const ctx = canvas.getContext(`2d`); canvas.width = canvas.height = size; for (let x = 0; x < size; ++x) {for (let y = 0; y < size; ++y) {ctx.fillStyle = colors[Int(Random() / 10 * colors.length - 1)]; ctx.fillRect(x,y,1,1)}} return new THREE.MeshLambertMaterial({map:loadTexture(canvas.toDataURL())})}; return [face(),face(),face(),face(),face(),face()]",
+			"name": "Sand"
+		},
+
+		"gravel": {
+			"material": "const size = 16; const colors = [`#667`,`#778`,`#889`,`#99A`,`#AAB`]; const face = () => {const canvas = document.createElement(`canvas`); const ctx = canvas.getContext(`2d`); canvas.width = canvas.height = size; for (let x = 0; x < size; ++x) {for (let y = 0; y < size; ++y) {ctx.fillStyle = colors[Int(Random() / 10 * colors.length - 1)]; ctx.fillRect(x,y,1,1)}} return new THREE.MeshLambertMaterial({map:loadTexture(canvas.toDataURL())})}; return [face(),face(),face(),face(),face(),face()]",
+			"name": "Gravel"
+		}
+	},
+	
+	"generations": {
+		"flat": "let b=[];for(let x=0;x<CHUNK_SIZE[0];++x){b[x]=[];for(let z=0;z<CHUNK_SIZE[1];++z){b[x][z]=[`voidbarrier`,`stone`,`stone`,`stone`,`dirt`,`dirt`,`grass`]}}return{blocks:b}"
+	},
+	
+	"description": "The official default resources pack for WebCraft",
+	"name": "Default",
+	"version": {
+		"code": "1.0-alpha",
+		"date": 0,
+		"name": "1.0 Alpha"
+	}
+}
